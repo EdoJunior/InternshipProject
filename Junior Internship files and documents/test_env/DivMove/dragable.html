@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-uicss">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+   <style>
+
+       #div1, #div3{
+           border: solid 1px;
+           background-color: gainsboro;
+           width: 150px;
+           height: 150px;
+           padding:0.5em;
+       }
+
+       #div2, #div4{
+           border: solid 1px;
+           background-color:grey;
+           width: 150px;
+           height: 150px;
+           padding:0.5em;
+       }
+   </style>
+
+    <script>
+ $(document).ready(function(){
+
+     $('#page-wrapper').sortable({
+         disabled: false
+     })
+
+     $('#div1 ').draggable({
+
+     });
+
+     $('#div2 ').draggable({
+
+     });
+
+     $('#div3 ').draggable({
+
+     });
+
+     $('#div4 ').draggable({
+
+     })
+
+
+
+
+
+ })
+
+
+
+    </script>
+
+
+
+
+
+</head>
+<body>
+<div id="page-wrapper">
+    <div id ="div1"  draggable="true" class="ui-widget-content">
+        <span>box is disabled</span>
+        <br/><br/>
+    </div>
+
+    <div id="div2" draggable="true" class="ui-widget-content">
+        <span> box moving distance 50</span>
+        <br/><br/>
+    </div>
+
+    <div id="div3" class="ui-widget-content">
+        <span> box has a delay of 500</span>
+    </div>
+
+    <div id="div4" class="ui-widget-content">
+        <span>box contained </span>
+    </div>
+
+
+</div>
+
+
+
+
+</body>
+</html>

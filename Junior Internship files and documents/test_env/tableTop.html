@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing</title>
+    <!--this is the top of the top for the set up-->
+    <script src="js/jquery-3.1.0.js"   integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   crossorigin="anonymous"></script>
+
+    <!--this if for the charts script-->
+
+    <script src="js/chartjs/Chart.js"></script>
+
+    <!--this is for the tableTop content-->
+    <script src="tabletop-master/src/tabletop.js"></script>
+
+    <!--this going be the code to set up both the excel sheet to b read and render the graph-->
+    <script>
+        $(document).ready(function(){
+            init();
+        });
+        var spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1zTz8bhWB4PA8z9juh7qDybx125P9brTIsICOCCLWMQg/pubhtml';
+
+        function init(){
+            Tabletop.init({
+                key: spreadsheet_url,
+                callback: showInfo,
+                simpleSheet: true})
+        };
+
+        function showInfo(data){
+
+            var ctx = document.getElementById("myCanvas");
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [nameValue(data)],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [ageValue(data)],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+        };
+
+        function nameValue(arg){
+            len = arg.length;
+            var temp = [];
+
+            for(var i = 0; i< len; i++){
+                var result = arg[i];
+                temp.push(result.name);
+                console.log( result.name);
+            }
+            return temp;
+        };
+
+        function ageValue(arg){
+            len = arg.length;
+            var temp = [];
+
+            for(var i = 0; i< len; i++){
+                var result = arg[i];
+                temp.push(result.age);
+            }
+        };
+//$(document).ready(function(){
+//var ctx = document.getElementById("myCanvas");
+//var myChart = new Chart(ctx, {
+//    type: 'bar',
+//    data: {
+//        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+//        datasets: [{
+//            label: '# of Votes',
+//            data: [12, 19, 3, 5, 2, 3],
+//            backgroundColor: [
+//                'rgba(255, 99, 132, 0.2)',
+//                'rgba(54, 162, 235, 0.2)',
+//                'rgba(255, 206, 86, 0.2)',
+//                'rgba(75, 192, 192, 0.2)',
+//                'rgba(153, 102, 255, 0.2)',
+//                'rgba(255, 159, 64, 0.2)'
+//            ],
+//            borderColor: [
+//                'rgba(255,99,132,1)',
+//                'rgba(54, 162, 235, 1)',
+//                'rgba(255, 206, 86, 1)',
+//                'rgba(75, 192, 192, 1)',
+//                'rgba(153, 102, 255, 1)',
+//                'rgba(255, 159, 64, 1)'
+//            ],
+//            borderWidth: 1
+//        }]
+//    },
+//    options: {
+//        scales: {
+//            yAxes: [{
+//                ticks: {
+//                    beginAtZero:true
+//                }
+//            }]
+//        }
+//    }
+//    });
+//});
+    </script>
+
+</head>
+<body>
+
+<h3> testing tabelTop before implement</h3>
+
+<h2> published document for testing link: <a href="https://docs.google.com/spreadsheets/d/1zTz8bhWB4PA8z9juh7qDybx125P9brTIsICOCCLWMQg/pubhtml"> https://docs.google.com/spreadsheets/d/1zTz8bhWB4PA8z9juh7qDybx125P9brTIsICOCCLWMQg/pubhtml</a></h2>
+
+
+
+    <canvas id="myCanvas" ></canvas>
+
+
+
+
+</body>
+</html>

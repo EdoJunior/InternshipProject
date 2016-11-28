@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <p id="food"></p>
+
+    <script type="text/javascript" src="../../src/tabletop.js"></script>
+    <script type="text/javascript">
+      window.onload = function() { init() };
+
+      var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1zTz8bhWB4PA8z9juh7qDybx125P9brTIsICOCCLWMQg/pubhtml';
+
+      function init() {
+        Tabletop.init( { key: public_spreadsheet_url,
+                         callback: showInfo,
+                         simpleSheet: true } );
+      }
+
+      function showInfo(data) {
+        // data comes through as a simple array since simpleSheet is turned on
+        
+		len = data.length;
+		alert("Successfully processed " + len + " rows!")
+		
+		
+		
+        document.getElementById("food").innerHTML = "<strong>Foods:</strong> " + ages(data);
+        console.log(typeof data[0].age);
+		
+		
+		
+     
+}
+        
+
+
+function doSo(arg){
+len = arg.length;
+var bla = [];
+
+for(var i = 0; i< len; i++){
+	var result = arg[i];
+	bla.push(result.name);
+	console.log( result.name);
+	}
+	return bla;
+}
+
+function ages(arg){
+len = arg.length;
+var temp = [];
+
+for(var i = 0; i<len; i++){
+var result = arg[i];
+temp.push(result.age);
+//console.log(result.age);
+}
+}
+    
+    document.write("The published spreadsheet is located at <a target='_new' href='" + public_spreadsheet_url + "'>" + public_spreadsheet_url + "</a>");
+    </script>
+  </body>
+</html>

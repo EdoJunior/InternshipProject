@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Draggable - Default functionality</title>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="./css/myStyle.css">
+  <style>
+  .ui-widget-content { width: 15px; height: 15px; padding: 0.5em; }
+    #burr{background-color:greenyellow}
+    #burr1{background-color:yellow}
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/myScript.js"></script>
+
+  <script>
+      $(document).ready(function(){
+          setCookie('jim',[45,97,4,], 30);
+
+      });
+
+      function setCookie(name, value, exdays){
+          var d = new Date();
+          d.setTime(d.getTime() + (exdays*24*60*60*1000));
+          var expires = "expires="+ d.toDateString();
+          document.cookie = name +"=" + value + "; "+expires;
+      };
+
+      function getCookie(name){
+          var name = name + "=";
+          var ca =  document.cookie.split(';');
+          for(var i = 0; i < ca.length; i++){
+              var c = ca[i];
+              while(c.charAt(0) ==' '){
+                  c = c.substring(1);
+              }
+              if(c.indexOf(name) == 0){
+                  return c.substring(name.length, c.length);
+              }
+          }
+
+          return "";
+      };
+
+      function checkCookie(name){
+          var user = getCookie("username");
+           if(user != ""){
+               Alert('hey it works');
+           }else{
+               user = prompt("please enter again thank you!!");
+               if(user !="" && user != null){
+                   setCookie("username", user ,30);
+               }
+           }
+      };
+
+
+  </script>
+
+
+  <script>
+     var jerry = [5,8,48,5,32,19,0];
+     var json_line = JSON.stringify(jerry );
+     setCookie('element',json_line, 30);
+      function quickSort(arr){
+
+          var arrLength = arr.length;
+          if(arrLength <= 1){
+              return arr;
+          }
+
+
+          var pivotPosition = Math.floor(arrLength / 2);
+          var pivotValue = arr[pivotPosition];
+          var less = [],
+                  more = [],
+                  same = [];
+
+          for(var i = 0; i <arrLength; i++){
+              if(arr[i] === pivotValue){
+                  same.push(arr[i]);
+              }else if(arr[i] < pivotValue){
+                  less.push(arr[i]);
+              }else{
+                  more.push(arr[i]);
+              }
+          }
+
+          return quickSort(less).concat(same, quickSort(more));
+      };
+
+function clicktest(){
+    var cookie = JSON.parse(getCookie('element'));
+    console.log('as a cookie: ',cookie);
+    console.log('as a normal array: ',jerry);
+    console.log('sorted cookie: ', quickSort(cookie) );
+    console.log('sorted normal arr: ' , quickSort(jerry));
+
+    var mymap= new Map();
+    mymap.set()
+}
+
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <div class ='row'>
+
+
+
+  </div>
+</div>
+
+<button class="bt" id="btn" onclick="clicktest()" value="Click here"> click here please!</button>
+
+<button clas=""></button>
+
+ <p id="results"></p>
+</body>
+</html>

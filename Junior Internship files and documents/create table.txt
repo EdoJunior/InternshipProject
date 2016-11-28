@@ -1,0 +1,12 @@
+Create table Mortgage(
+mortgage_id int(11) not null AUTO_INCREMENT PRIMARY KEY,
+type varchar(255) not null,
+amount float(5,2)
+);
+
+Insert into Mortgage (type, amount)
+values('house','200.50');
+
+Drop table Mortgage;
+
+
